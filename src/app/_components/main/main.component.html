@@ -1,0 +1,63 @@
+<section class="landing" *ngIf="data_loaded">
+
+  <div class="weather-cards-container">
+
+    <!-- Top part of card that holds current date data -->
+
+    <h3>Just Weather</h3>
+
+    <mat-card class="top-card">
+
+      <div class="first-row">
+
+        <div class="image-background">
+
+          <img src="{{today_weather.iconLink }}" alt="">
+
+        </div>
+
+      </div>
+
+      <div class="current-temp">
+
+        <h1>{{ today_weather.temperature | number }} </h1>
+        <i class="far fa-circle"></i>
+        <p>F</p>
+
+      </div>
+
+      <div class="second-row">
+
+        <p>{{ today_weather.city }}, {{ today_weather.state }}</p>
+        <p>Outside: {{ today_weather.description }}</p>
+        <p>High: {{ today_weather.highTemperature }} / Low: {{ today_weather.lowTemperature }}</p>
+        <p>Winds: {{ today_weather.windSpeed | number }}</p>
+
+      </div>
+
+    </mat-card>
+
+    <!-- Bottom of container that holds two cards for hourly and daily. -->
+
+    <div class="bottom-cards">
+
+      <mat-card class="daily" (click)="getDayDetails()">
+        <div class="day-tile" *ngFor="let day of daily_weather">
+          <div class="day">
+              <p>{{ day.weekday }}</p>
+              <div class="underline"></div>
+          </div>
+          <div class="day-info">
+            <img src="{{ day.iconLink }}" alt="">
+            <p>High: {{ day.highTemperature }} / Low: {{ day.lowTemperature }}</p>
+          </div>
+        </div>
+      </mat-card>
+
+    </div>
+
+  </div>
+
+  <p>Click tracking</p>
+  <p>{{ clicks }}</p>
+</section>

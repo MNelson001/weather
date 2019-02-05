@@ -1,0 +1,28 @@
+<div class="body">
+
+  <div class="banner">
+    <div class="line"></div>
+    <h1>JUST WEATHER</h1>
+    <div class="line"></div>
+  </div>
+
+  <form action="" class="zip-input">
+
+    <mat-form-field class="zip-code">
+      <input id="zip" matInput type="text" placeholder="Zip Code" (keyup)="onKey($event)">
+    </mat-form-field>
+
+  </form>
+
+  <p class="agreement-text">By clicking submit you agree to our</p>
+
+  <div class="agreement">
+    <mat-checkbox (change)="checked($event)"></mat-checkbox>
+    <a class="terms" href="javascript:void(0)">Terms and Conditions</a>
+  </div>
+
+  <div class="zip-submit" *ngIf="sufficient_zip">
+    <button type="submit" (click)="closeDialog()" mat-button class="zip-btn">Submit</button>
+  </div>
+
+</div>
